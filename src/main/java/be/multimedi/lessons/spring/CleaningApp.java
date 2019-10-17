@@ -2,19 +2,24 @@ package be.multimedi.lessons.spring;
 
 import be.multimedi.lessons.spring.tools.Broom;
 import be.multimedi.lessons.spring.tools.CleaningTool;
+import be.multimedi.lessons.spring.tools.Sponge;
 import be.multimedi.lessons.spring.tools.VacuumCleaner;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class CleaningApp {
     public static void main(String[] args) {
-        CleaningTool broom = new Broom();
-        CleaningTool vacuum =  new VacuumCleaner();
-        CleaningServiceImpl service = new CleaningServiceImpl();
+        ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        service.setCleaningTool(broom);
-        service.clean();
+        CleaningService jill = ctx.getBean("jill", CleaningService.class);
+        CleaningService pommeline = ctx.getBean("pommeline", CleaningService.class);
+        CleaningService geoffrey = ctx.getBean("geoffrey", CleaningService.class);
 
-        service.setCleaningTool(vacuum);
-        service.clean();
+        jill.clean();
+        pommeline.clean();
+        geoffrey.clean();
+
+        ctx.close();
 
     }
 }
