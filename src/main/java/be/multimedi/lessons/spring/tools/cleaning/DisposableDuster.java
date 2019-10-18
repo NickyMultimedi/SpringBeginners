@@ -1,9 +1,11 @@
 package be.multimedi.lessons.spring.tools.cleaning;
 
 import be.multimedi.lessons.spring.tools.CleaningTool;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope("prototype")
 public class DisposableDuster implements CleaningTool {
     private boolean used = false;
 

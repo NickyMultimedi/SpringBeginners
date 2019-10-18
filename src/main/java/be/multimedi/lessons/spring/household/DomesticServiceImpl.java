@@ -1,11 +1,12 @@
 package be.multimedi.lessons.spring.household;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("domesticService")
 public class DomesticServiceImpl implements DomesticService {
-    GardeningService garden;
-    CleaningService cleaning;
+    @Autowired GardeningService garden;
+    @Autowired CleaningService cleaning;
 
     @Override
     public void runHouseHold() {

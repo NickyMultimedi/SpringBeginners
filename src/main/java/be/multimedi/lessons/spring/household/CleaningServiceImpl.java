@@ -1,9 +1,13 @@
 package be.multimedi.lessons.spring.household;
 
 import be.multimedi.lessons.spring.tools.CleaningTool;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service
+import java.util.List;
+
+@Service("cleaningService")
 public class CleaningServiceImpl implements CleaningService {
     private CleaningTool tool;
 
@@ -13,7 +17,8 @@ public class CleaningServiceImpl implements CleaningService {
         tool.doCleanJob();
     }
 
-    public void setCleaningTool(CleaningTool tool) {
+    @Autowired
+    public void setCleaningTool(@Qualifier("broomie") CleaningTool tool) {
         this.tool = tool;
     }
 }

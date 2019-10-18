@@ -1,11 +1,12 @@
 package be.multimedi.lessons.spring.household;
 
 import be.multimedi.lessons.spring.tools.GardeningTool;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("gardeningService")
 public class GardeningServiceImpl implements GardeningService {
-    private GardeningTool tool;
+    @Autowired private GardeningTool tool;
 
     @Override
     public void gardening() {

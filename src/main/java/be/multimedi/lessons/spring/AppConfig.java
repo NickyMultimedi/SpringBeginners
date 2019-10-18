@@ -12,5 +12,13 @@ import org.springframework.context.annotation.*;
 @Configuration
 @ComponentScan
 public class AppConfig {
+    @Bean
+    public DomesticService jill() {
+        return new DomesticService() {
+            @Override
+            public void runHouseHold() {
 
+            }
+        };
+    }
 }
