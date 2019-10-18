@@ -9,7 +9,7 @@ public class CleaningApp {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        DomesticService service = ctx.getBean("vivian", DomesticService.class);
+        DomesticService service = ctx.getBean("aunt viv", DomesticService.class);
         service.runHouseHold();
 
         ctx.close();

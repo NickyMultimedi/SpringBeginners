@@ -7,6 +7,8 @@ public class DomesticServiceImpl implements DomesticService {
     @Override
     public void runHouseHold() {
         System.out.println("Start Running the house Hold");
+        garden.gardening();
+        cleaning.clean();
     }
 
     public void setGardeningService(GardeningService garden) {

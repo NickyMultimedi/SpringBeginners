@@ -86,9 +86,8 @@ public class AppConfig {
     @Bean(name = {"vi", "viv", "aunt viv", "vivian", "madam"})
     @Primary
     public DomesticService vivian(GardeningService gardeningService, CleaningService cleaningService) {
-        DomesticService impl = new DomesticServiceImpl()
+        return new DomesticServiceImpl()
                 .withGardeningService(gardeningService)
                 .withCleaningService(cleaningService);
-        return impl;
     }
 }
