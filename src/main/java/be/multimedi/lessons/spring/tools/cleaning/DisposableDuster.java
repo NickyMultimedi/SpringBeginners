@@ -1,20 +1,29 @@
 package be.multimedi.lessons.spring.tools.cleaning;
 
 import be.multimedi.lessons.spring.tools.CleaningTool;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import java.util.logging.Logger;
 
 @Component
 @Scope("prototype")
+@Qualifier("dust")
+@Order(1)
 public class DisposableDuster implements CleaningTool {
     private boolean used = false;
+    @Autowired
+    Logger logger;
 
     @Override
     public void doCleanJob() {
         if (used) {
-            System.out.println("Take a new one. I'm dirty");
+            logger.info("Take a new one. I'm dirty");
         } else {
-            System.out.println("Swingend schoon met Swiffer");
+            logger.info("Swingend schoon met Swiffer");
             used = true;
         }
     }

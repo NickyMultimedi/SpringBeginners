@@ -8,15 +8,10 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class CleaningApp {
-//    @Autowired
-//    static CleaningService service;
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-//        CleaningTool tool = ctx.getBean("broom", CleaningTool.class);
-//        tool.doCleanJob();
-
-        DomesticService service = ctx.getBean("domesticService", DomesticService.class);
+        DomesticService service = ctx.getBean("vivian", DomesticService.class);
 
         service.runHouseHold();
 

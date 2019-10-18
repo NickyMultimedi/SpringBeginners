@@ -1,35 +1,24 @@
 package be.multimedi.lessons.spring.household;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-@Service("domesticService")
+import java.util.logging.Logger;
+
+@Service("vivian")
 public class DomesticServiceImpl implements DomesticService {
     @Autowired GardeningService garden;
-    @Autowired CleaningService cleaning;
+    @Autowired @Qualifier("robot") CleaningService cleaning;
+    @Autowired Logger logger;
 
     @Override
     public void runHouseHold() {
-        System.out.println("Start Running the house Hold");
+        logger.info("running household");
+        logger.info("Frank, do the garden");
         garden.gardening();
+        logger.info("Geoffrey, do the house please");
         cleaning.clean();
-    }
-
-    public void setGardeningService(GardeningService garden) {
-        this.garden = garden;
-    }
-
-    public void setCleaningService(CleaningService cleaning) {
-        this.cleaning = cleaning;
-    }
-
-    public DomesticServiceImpl withGardeningService(GardeningService garden) {
-        this.setGardeningService(garden);
-        return this;
-    }
-
-    public DomesticServiceImpl withCleaningService(CleaningService cleaning) {
-        this.setCleaningService(cleaning);
-        return this;
+        logger.info("done running the household. Geoffrey, get me a cocktail.");
     }
 }

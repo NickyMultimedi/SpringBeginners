@@ -1,28 +1,35 @@
 package be.multimedi.lessons.spring.tools.cleaning;
 
 import be.multimedi.lessons.spring.tools.CleaningTool;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import java.util.logging.Logger;
 
 @Component
 @Primary
-@Qualifier("broomie")
+@Qualifier("swipe")
+@Order(2)
 public class Broom implements CleaningTool {
+    @Autowired
+    Logger logger;
 
     public Broom() {
-        System.out.println("Constructing Broom");
+//        logger.info("Constructing Broom");
     }
 
     public void init() {
-        System.out.println("Initializing Broom");
+        logger.info("Initializing Broom");
     }
     public void doCleanJob() {
-        System.out.println("Sweep sweep");
+        logger.info("Sweep sweep");
     }
 
     public void destroy() {
-        System.out.println("Destroy Broom");
+        logger.info("Destroy Broom");
     }
 }
