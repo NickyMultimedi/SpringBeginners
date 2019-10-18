@@ -1,7 +1,9 @@
 package be.multimedi.lessons.spring.household;
 
 import be.multimedi.lessons.spring.tools.GardeningTool;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GardeningServiceImpl implements GardeningService {
     private GardeningTool tool;
 

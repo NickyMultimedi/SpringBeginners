@@ -1,5 +1,8 @@
 package be.multimedi.lessons.spring.household;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class DomesticServiceImpl implements DomesticService {
     GardeningService garden;
     CleaningService cleaning;

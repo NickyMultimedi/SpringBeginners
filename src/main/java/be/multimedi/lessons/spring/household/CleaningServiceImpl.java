@@ -1,7 +1,9 @@
 package be.multimedi.lessons.spring.household;
 
 import be.multimedi.lessons.spring.tools.CleaningTool;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CleaningServiceImpl implements CleaningService {
     private CleaningTool tool;
 
