@@ -1,12 +1,17 @@
 package be.multimedi.lessons.spring;
 
 import be.multimedi.lessons.spring.tools.*;
+import be.multimedi.lessons.spring.tools.cleaning.Broom;
+import be.multimedi.lessons.spring.tools.cleaning.DisposableDuster;
+import be.multimedi.lessons.spring.tools.cleaning.Sponge;
+import be.multimedi.lessons.spring.tools.cleaning.VacuumCleaner;
+import be.multimedi.lessons.spring.tools.gardening.LawnMower;
 import org.springframework.context.annotation.*;
 
 @Configuration
 public class AppConfig {
-    @Bean
-    @Scope("prototype")
+    @Bean(initMethod = "init", destroyMethod = "destroy")
+    @Primary
     public CleaningTool broom() {
         return new Broom();
     }
@@ -28,23 +33,28 @@ public class AppConfig {
     }
 
     @Bean
-    public CleaningService jill() {
+    public GardeningTool mower() {
+        return new LawnMower();
+    }
+
+    @Bean
+    public CleaningService jill(CleaningTool tool) {
         CleaningServiceImpl impl = new CleaningServiceImpl();
-        impl.setCleaningTool(broom());
+        impl.setCleaningTool(tool);
         return impl;
     }
 
     @Bean(name = {"pommeline", "pommeke", "pomtje"})
     public CleaningService pommeline() {
         CleaningServiceImpl impl = new CleaningServiceImpl();
-        impl.setCleaningTool(vacuum());
+        impl.setCleaningTool(broom());
         return impl;
     }
 
     @Bean
     public CleaningService geoffrey() {
         CleaningServiceImpl impl = new CleaningServiceImpl();
-        impl.setCleaningTool(sponge());
+        impl.setCleaningTool(broom());
         return impl;
     }
 
@@ -60,5 +70,12 @@ public class AppConfig {
         CleaningServiceImpl impl = new CleaningServiceImpl();
         impl.setCleaningTool(swiffer());
         return impl;
+    }
+
+    @Bean
+    public GardeningService lars(GardeningTool tool) {
+        GardeningServiceImpl gsi = new GardeningServiceImpl();
+        gsi.setGardeningTool(tool);
+        return gsi;
     }
 }

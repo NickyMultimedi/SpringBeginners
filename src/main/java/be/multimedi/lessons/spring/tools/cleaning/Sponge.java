@@ -1,4 +1,6 @@
-package be.multimedi.lessons.spring.tools;
+package be.multimedi.lessons.spring.tools.cleaning;
+
+import be.multimedi.lessons.spring.tools.CleaningTool;
 
 public class Sponge implements CleaningTool {
     @Override
