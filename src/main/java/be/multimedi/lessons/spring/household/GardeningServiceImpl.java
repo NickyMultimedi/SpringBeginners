@@ -1,4 +1,4 @@
-package be.multimedi.lessons.spring;
+package be.multimedi.lessons.spring.household;
 
 import be.multimedi.lessons.spring.tools.GardeningTool;
 

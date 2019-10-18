@@ -1,5 +1,6 @@
 package be.multimedi.lessons.spring;
 
+import be.multimedi.lessons.spring.household.*;
 import be.multimedi.lessons.spring.tools.*;
 import be.multimedi.lessons.spring.tools.cleaning.Broom;
 import be.multimedi.lessons.spring.tools.cleaning.DisposableDuster;
@@ -33,6 +34,7 @@ public class AppConfig {
     }
 
     @Bean
+    @Primary
     public GardeningTool mower() {
         return new LawnMower();
     }
@@ -45,16 +47,17 @@ public class AppConfig {
     }
 
     @Bean(name = {"pommeline", "pommeke", "pomtje"})
-    public CleaningService pommeline() {
+    public CleaningService pommeline(CleaningTool tool) {
         CleaningServiceImpl impl = new CleaningServiceImpl();
-        impl.setCleaningTool(broom());
+        impl.setCleaningTool(tool);
         return impl;
     }
 
     @Bean
+    @Primary
     public CleaningService geoffrey() {
         CleaningServiceImpl impl = new CleaningServiceImpl();
-        impl.setCleaningTool(broom());
+        impl.setCleaningTool(vacuum());
         return impl;
     }
 
@@ -73,9 +76,19 @@ public class AppConfig {
     }
 
     @Bean
+    @Primary
     public GardeningService lars(GardeningTool tool) {
         GardeningServiceImpl gsi = new GardeningServiceImpl();
         gsi.setGardeningTool(tool);
         return gsi;
+    }
+
+    @Bean(name = {"vi", "viv", "aunt viv", "vivian", "madam"})
+    @Primary
+    public DomesticService vivian(GardeningService gardeningService, CleaningService cleaningService) {
+        DomesticService impl = new DomesticServiceImpl()
+                .withGardeningService(gardeningService)
+                .withCleaningService(cleaningService);
+        return impl;
     }
 }

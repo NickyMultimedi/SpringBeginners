@@ -1,5 +1,7 @@
 package be.multimedi.lessons.spring;
 
+import be.multimedi.lessons.spring.household.CleaningService;
+import be.multimedi.lessons.spring.household.DomesticService;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -7,18 +9,8 @@ public class CleaningApp {
     public static void main(String[] args) {
         ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
-        CleaningService jill = ctx.getBean("jill", CleaningService.class);
-        CleaningService pommeline = ctx.getBean("pomtje", CleaningService.class);
-        CleaningService geoffrey = ctx.getBean("geoffrey", CleaningService.class);
-        CleaningService bagera = ctx.getBean("bagera", CleaningService.class);
-        CleaningService bagheera = ctx.getBean("bagheera", CleaningService.class);
-
-        jill.clean();
-        pommeline.clean();
-        geoffrey.clean();
-        bagera.clean();
-        bagheera.clean();
-        bagheera.clean();
+        DomesticService service = ctx.getBean("vivian", DomesticService.class);
+        service.runHouseHold();
 
         ctx.close();
 
