@@ -30,6 +30,7 @@ public class CleaningServiceImpl implements CleaningService {
     public void clean() {
         logger.info("Cleaning the House");
         tool.doCleanJob();
+        logger.info(String.format("The hourly rate for this service is %.2f euro", this.rate));
     }
 
     @PostConstruct
@@ -42,7 +43,7 @@ public class CleaningServiceImpl implements CleaningService {
         logger.info("Before destroying the Cleaning service");
     }
 
-    @Value("9")
+    @Value("${rate}")
     public void setRate(double rate) {
         this.rate = rate;
     }

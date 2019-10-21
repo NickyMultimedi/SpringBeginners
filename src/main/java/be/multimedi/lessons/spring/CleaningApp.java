@@ -17,12 +17,12 @@ public class CleaningApp {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(AppConfig.class);
-        ctx.getEnvironment().setActiveProfiles("smallHouse");
+        ctx.getEnvironment().setActiveProfiles("bigHouse");
         ctx.refresh();
 
-        Hello s = ctx.getBean(Hello.class);
+        DomesticService s = ctx.getBean("vivian", DomesticService.class);
 
-        System.out.println(s.sayHello());
+        s.runHouseHold();
 
         ctx.close();
 
