@@ -3,4 +3,5 @@ open module be.multimedi.lesson.spring {
     requires spring.beans;
     requires spring.context;
     requires java.sql;
+    requires java.annotation;
 }

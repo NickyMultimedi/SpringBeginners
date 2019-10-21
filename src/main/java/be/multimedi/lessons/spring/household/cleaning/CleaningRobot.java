@@ -4,9 +4,12 @@ import be.multimedi.lessons.spring.household.CleaningService;
 import be.multimedi.lessons.spring.tools.CleaningTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -18,6 +21,24 @@ public class CleaningRobot implements CleaningService {
     List<CleaningTool> tools;
     @Autowired
     Logger logger;
+
+    public CleaningRobot(List<CleaningTool> tools, Logger logger) {
+        logger.info("Constructor called by robot");
+    }
+
+    @PostConstruct
+    public void init() {
+        logger.info("Robot Service Post Contruct");
+    }
+
+    @PreDestroy
+    public void destroy() {
+        logger.info("Before destroying the robot service");
+    }
+
+    public void setLogger(Logger logger) {
+        this.logger = logger;
+    }
 
     @Override
     public void clean() {
