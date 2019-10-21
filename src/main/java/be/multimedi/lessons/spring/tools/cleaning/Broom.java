@@ -5,14 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.logging.Logger;
 
 @Component
-@Primary
-@Qualifier("swipe")
+//@Primary
+//@Qualifier("swipe")
+@Profile("bigHouse | smallHouse")
 @Order(2)
 public class Broom implements CleaningTool {
     @Autowired

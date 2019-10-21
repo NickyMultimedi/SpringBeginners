@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppConfigB {
-    @Bean
-    public CleaningTool bearnice() {
-        return new Broom();
-    }
+//    @Bean
+//    public CleaningTool bearnice() {
+//        return new Broom();
+//    }
 }

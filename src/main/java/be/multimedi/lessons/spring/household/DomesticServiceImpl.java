@@ -11,7 +11,9 @@ import java.util.logging.Logger;
 @Service("vivian")
 public class DomesticServiceImpl implements DomesticService {
     @Autowired GardeningService garden;
-    @Autowired @Qualifier("robot") CleaningService cleaning;
+    @Autowired
+//    @Qualifier("robot")
+    CleaningService cleaning;
     @Autowired Logger logger;
 
     @Override

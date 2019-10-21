@@ -3,11 +3,13 @@ package be.multimedi.lessons.spring.tools.gardening;
 import be.multimedi.lessons.spring.tools.GardeningTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.logging.Logger;
 
 @Component("noisy")
+@Profile("smallHouse")
 public class LawnMower implements GardeningTool {
     @Autowired
     Logger logger;

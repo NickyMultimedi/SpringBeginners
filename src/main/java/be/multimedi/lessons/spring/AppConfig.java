@@ -12,6 +12,7 @@ import org.springframework.context.annotation.*;
 
 @Configuration
 @ComponentScan
+@PropertySource("classpath:application.properties")
 //@Import(AppConfigB.class)
 public class AppConfig {
 

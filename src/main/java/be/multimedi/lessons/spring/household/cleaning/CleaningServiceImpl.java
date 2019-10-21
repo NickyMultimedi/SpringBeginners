@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +15,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Service("geoffrey")
-@Primary
+//@Primary
+@Profile("smallHouse")
 public class CleaningServiceImpl implements CleaningService {
     private CleaningTool tool;
     private double rate;
@@ -46,7 +48,7 @@ public class CleaningServiceImpl implements CleaningService {
     }
 
     @Autowired
-    public void setCleaningTool(@Qualifier("broom") CleaningTool tool) {
+    public void setCleaningTool(CleaningTool tool) {
         this.tool = tool;
     }
 }

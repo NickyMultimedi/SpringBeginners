@@ -2,10 +2,7 @@ package be.multimedi.lessons.spring.tools.gardening;
 
 import be.multimedi.lessons.spring.tools.GardeningTool;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
@@ -17,7 +14,8 @@ public class HedgeTrimmerFactory {
     Logger logger;
 
     @Bean
-    @Primary
+//    @Primary
+    @Profile("bigHouse")
     @Scope(value = "prototype", proxyMode = ScopedProxyMode.INTERFACES)
     public GardeningTool hedgeTrimmer() {
         int hour = LocalTime.now().getHour();
