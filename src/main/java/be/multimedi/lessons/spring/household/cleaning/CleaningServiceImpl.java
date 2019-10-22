@@ -1,5 +1,6 @@
 package be.multimedi.lessons.spring.household.cleaning;
 
+import be.multimedi.lessons.spring.events.LunchEvent;
 import be.multimedi.lessons.spring.household.CleaningService;
 import be.multimedi.lessons.spring.tools.CleaningTool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -31,6 +33,11 @@ public class CleaningServiceImpl implements CleaningService {
         logger.info("Cleaning the House");
         tool.doCleanJob();
         logger.info(String.format("The hourly rate for this service is %.2f euro", this.rate));
+    }
+
+    @EventListener(classes = LunchEvent.class)
+    public void onLunchEvent() {
+        logger.info("Lunch Time for the Cleaning crew");
     }
 
     @PostConstruct
