@@ -32,6 +32,11 @@ public class CleaningServiceImpl implements CleaningService {
     public void clean() {
         logger.info("Cleaning the House");
         tool.doCleanJob();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ie) {
+            System.out.println("Belle must be here somewhere");
+        }
         logger.info(String.format("The hourly rate for this service is %.2f euro", this.rate));
     }
 

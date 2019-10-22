@@ -1,7 +1,9 @@
 package be.multimedi.lessons.spring.household;
 
+import be.multimedi.lessons.spring.events.LunchEvent;
 import be.multimedi.lessons.spring.tools.GardeningTool;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -18,7 +20,17 @@ public class GardeningServiceImpl implements GardeningService {
     public void gardening() {
         logger.info("start Gardening");
         tool.doGardenJob();
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ie) {
+            System.out.println("Tools are moving by themselves.");
+        }
         logger.info("done Gardening");
+    }
+
+    @EventListener
+    public void onLunchEvent(LunchEvent lunch) {
+        logger.info("Gardeners Unite en feast on this holy food.");
     }
 
     @PostConstruct

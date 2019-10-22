@@ -23,9 +23,11 @@ public class CleaningApp {
         ctx.getEnvironment().setActiveProfiles("smallHouse");
         ctx.refresh();
 
-        DomesticService service = ctx.getBean("vivian", DomesticService.class);
-        service.runHouseHold();
-        ctx.publishEvent(new LunchEvent());
+        ctx.start();
+
+//        DomesticService service = ctx.getBean("vivian", DomesticService.class);
+//        service.runHouseHold();
+//        ctx.publishEvent(new LunchEvent());
 
         ctx.close();
 
