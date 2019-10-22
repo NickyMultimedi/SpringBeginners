@@ -14,6 +14,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
+import java.util.Locale;
 import java.util.Random;
 
 public class CleaningApp {
@@ -23,11 +24,10 @@ public class CleaningApp {
         ctx.getEnvironment().setActiveProfiles("smallHouse");
         ctx.refresh();
 
-        ctx.start();
+        Locale locale = new Locale("nl", "NL");
+        String message = ctx.getMessage("welcome", new Object[] {12}, locale);
 
-//        DomesticService service = ctx.getBean("vivian", DomesticService.class);
-//        service.runHouseHold();
-//        ctx.publishEvent(new LunchEvent());
+        System.out.println(message);
 
         ctx.close();
 
