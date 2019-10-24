@@ -24,7 +24,7 @@ public class CleaningServiceImpl implements CleaningService {
     private double rate;
     @Autowired Logger logger;
 
-    public CleaningServiceImpl(Logger logger) {
+    public CleaningServiceImpl() {
         logger.info("Cleaning Service constructed");
     }
 

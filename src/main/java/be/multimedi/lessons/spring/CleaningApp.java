@@ -30,7 +30,8 @@ public class CleaningApp {
         DomesticService service = ctx.getBean(DomesticService.class);
 
         service.runHouseHold();
-        ((MusicMaker) service).makeMusic();
+        MusicMaker musician = (MusicMaker) service;
+        musician.makeMusic();
 
         ctx.close();
 
