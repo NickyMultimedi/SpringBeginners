@@ -22,10 +22,15 @@ import java.util.logging.Logger;
 public class CleaningServiceImpl implements CleaningService {
     private CleaningTool tool;
     private double rate;
-    @Autowired Logger logger;
+    private Logger logger;
 
     public CleaningServiceImpl() {
         logger.info("Cleaning Service constructed");
+    }
+
+    @Autowired
+    public void setLogger(Logger logger) {
+        this.logger = logger;
     }
 
     @Override
