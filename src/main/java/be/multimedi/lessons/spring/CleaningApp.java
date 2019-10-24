@@ -5,6 +5,7 @@ import be.multimedi.lessons.spring.computer.Computer;
 import be.multimedi.lessons.spring.events.LunchEvent;
 import be.multimedi.lessons.spring.household.CleaningService;
 import be.multimedi.lessons.spring.household.DomesticService;
+import be.multimedi.lessons.spring.household.music.MusicMaker;
 import be.multimedi.lessons.spring.sayhello.Hello;
 import be.multimedi.lessons.spring.tools.CleaningTool;
 import be.multimedi.lessons.spring.tools.cleaning.Broom;
@@ -23,12 +24,13 @@ public class CleaningApp {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(AppConfig.class);
-        ctx.getEnvironment().setActiveProfiles("smallHouse");
+        ctx.getEnvironment().setActiveProfiles("bigHouse");
         ctx.refresh();
 
-        MyInterface bean = ctx.getBean(MyInterface.class);
-        System.out.println(bean.sayHello(NAME));
-        System.out.println(bean.sayGoodbye(NAME));
+        DomesticService service = ctx.getBean(DomesticService.class);
+
+        service.runHouseHold();
+        ((MusicMaker) service).makeMusic();
 
         ctx.close();
 
