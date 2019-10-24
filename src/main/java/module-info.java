@@ -4,4 +4,5 @@ open module be.multimedi.lesson.spring {
     requires spring.context;
     requires java.sql;
     requires java.annotation;
+    requires org.aspectj.weaver;
 }

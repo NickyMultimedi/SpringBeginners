@@ -15,6 +15,7 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 @Configuration
 @ComponentScan
 @PropertySource("classpath:application.properties")
+@EnableAspectJAutoProxy
 //@Import(AppConfigB.class)
 public class AppConfig {
 
